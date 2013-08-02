@@ -1,0 +1,46 @@
+<!--
+
+#########################################################################
+/   script h3c_3100_cpu_utilization.xml for CACTI projects	        #
+/                                                                       #
+/   part of "H3C 3100 series CACTI Template"                            #
+/                                                                       #
+/   created by Patrik Majer (Kacer Huhu) - www.patrik-majer.net         #
+/                                                                       #
+/   version 0.1 - initial release - 2011-08-30                          #
+/                                                                       #
+#########################################################################
+
+-->
+<interface>
+        <name>Get CPU Utilization</name>
+        <script_path>|path_php_binary| -q |path_cacti|/scripts/query_h3c_3100_cpu_utilization.php</script_path>
+        <arg_prepend>|host_hostname| |host_id| |host_snmp_version|:|host_snmp_port|:|host_snmp_timeout|:|host_ping_retries|:|host_max_oids|:|host_snmp_community|:|host_snmp_username|:|host_snmp_password|:|host_snmp_auth_protocol|:|host_snmp_priv_passphrase|:|host_snmp_priv_protocol|:|host_snmp_context|</arg_prepend>
+        <arg_index>index</arg_index>
+        <arg_query>query</arg_query>
+        <arg_get>get</arg_get>
+        <arg_num_indexes>num_indexes</arg_num_indexes>
+        <output_delimeter>!</output_delimeter>
+        <index_order>itIndex</index_order>
+        <index_order_type>numeric</index_order_type>
+        <index_title_format>|chosen_order_field|</index_title_format>
+        
+	<fields>
+               <itIndex>
+                        <name>Index Number</name>
+                        <direction>input</direction>
+                        <query_name>index</query_name>
+               </itIndex>               
+               <itName>
+                        <name>Name</name>
+                        <direction>input</direction>
+                        <query_name>name</query_name>
+                </itName>
+                <itLoad>
+                        <name>Load</name>
+                        <direction>output</direction>
+                        <query_name>load</query_name>
+                </itLoad>
+
+	</fields>
+</interface>
