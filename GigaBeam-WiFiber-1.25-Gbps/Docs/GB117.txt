@@ -1,0 +1,3834 @@
+GBEAM-MIB DEFINITIONS ::= BEGIN
+
+-- Top-level infrastructure of the GIGABEAM project enterprise MIB tree
+
+IMPORTS
+    MODULE-IDENTITY, enterprises FROM SNMPv2-SMI
+    DisplayString FROM SNMPv2-TC;
+
+gbeam			MODULE-IDENTITY 
+    LAST-UPDATED 	"200510170000Z"
+    ORGANIZATION 	"www.mantaro.com"
+    CONTACT-INFO    	"postal:   Gigabeam Project
+                    	Germantown MD 20874
+          		email:    admin@mantaro.com"
+    DESCRIPTION 	"Top-level infrastructure of the GIGABEAM project enterprise MIB tree"
+    REVISION     	"200510170000Z"
+    DESCRIPTION 	"First draft"
+    ::= { enterprises 22113}
+gbeamSfp 		OBJECT IDENTIFIER	::= {gbeam 1}
+
+gbeamSfp1		OBJECT IDENTIFIER	::= {gbeamSfp 1}
+
+gbeamSfp1Base		OBJECT IDENTIFIER	::= {gbeamSfp1 1}
+
+sfp1BaseId 			OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			sfp(3) 
+			}
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION		"SFP Serial Id"
+    ::= { gbeamSfp1Base 1 }
+
+sfp1BaseExtId 			OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			sfp(4)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Extended Id"
+    ::= { gbeamSfp1Base 2 }
+
+sfp1BaseConnector 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			unspecified(0),
+			lc(7),
+			mt_rj(8)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Connector Type"
+    ::= { gbeamSfp1Base 3 }
+
+sfp1BaseTransceiver1		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			none(0), 
+			tc_1XCopperPassive(1), 
+			tc_1XCopperActive(2), 
+			tc_1XSX(4), 
+			tc_1XLX(8)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver1 Codes"
+    ::= { gbeamSfp1Base 4 }
+
+sfp1BaseTransceiver2		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			none(0), 
+			tc_OC48ShortReach(1), 
+			tc_OC48IntermediateReach(2), 
+			tc_OC48LongReach(4) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver2 Codes"
+    ::= { gbeamSfp1Base 5 }
+
+sfp1BaseTransceiver3		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			none(0), 
+			reserved(128) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver3 Codes"
+    ::= { gbeamSfp1Base 6 }
+
+sfp1BaseTransceiver4		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			none(0), 
+			tc_1000BASESX(1), 
+			tc_1000BASELX(2) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver4 Codes"
+    ::= { gbeamSfp1Base 7 }
+
+sfp1BaseTransceiver5		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			none(0), 
+			tc_ElectricalInterenclosure(1), 
+			tc_LongwaveLaser(2), 
+			tc_Longdistance(16), 
+			tc_Intermediatedistance(32),
+			tc_Shortdistance(64),
+			tc_Verylongdistance(128)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver5 Codes"
+    ::= { gbeamSfp1Base 8 }
+
+sfp1BaseTransceiver6		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			none(0), 
+			tc_CopperPassive(4), 
+			tc_CopperActive(8), 
+			tc_LongwaveLaser(16), 
+			tc_ShortwaveLaserwithOFC(32), 
+			tc_ShortwaveLaserwoOFC(64), 
+			tc_ElectricalIntraenclosure(128) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver6 Codes"
+    ::= { gbeamSfp1Base 9 }
+
+sfp1BaseTransceiver7		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver7 Codes"
+    ::= { gbeamSfp1Base 10 }
+
+sfp1BaseTransceiver8		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Transceiver8 Codes"
+    ::= { gbeamSfp1Base 11 }
+
+sfp1BaseEncoding 		OBJECT-TYPE
+    SYNTAX              INTEGER { 
+			unspecified(0), 
+			en_8B10B(1), 
+			en_4B5B(2), 
+			en_NRZ(3), 
+			en_Manchester(4), 
+			en_SONETScrambled(5) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Encoding Type"
+    ::= { gbeamSfp1Base 12 }
+
+sfp1BaseNomBR 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Nominal BR"
+    ::= { gbeamSfp1Base 13 }
+
+sfp1BaseLength9ukm 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Length 9um in km"
+    ::= { gbeamSfp1Base 14 }
+
+sfp1BaseLength9um 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Length 9um in 100m"
+    ::= { gbeamSfp1Base 15 }
+
+sfp1BaseLength50um 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Length 50um"
+    ::= { gbeamSfp1Base 16 }
+
+sfp1BaseLength62pt5um 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Length 62.5"
+    ::= { gbeamSfp1Base 17 }
+
+sfp1BaseLengthCopper 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Length Copper"
+    ::= { gbeamSfp1Base 18 }
+
+sfp1BaseVendorName 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Vendor Name"
+    ::= { gbeamSfp1Base 19 }
+
+sfp1BaseVendorOUI 		OBJECT-TYPE
+    SYNTAX      	OCTET STRING
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Vendor OUI"
+    ::= { gbeamSfp1Base 20 }
+
+sfp1BaseVendorPN 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Vendor PN"
+    ::= { gbeamSfp1Base 21 }
+
+sfp1BaseVendorRev 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Vendor Rev"
+    ::= { gbeamSfp1Base 22 }
+
+sfp1BaseWavelength 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Wavelength"
+    ::= { gbeamSfp1Base 23 }
+
+gbeamSfp1Ext		OBJECT IDENTIFIER ::= {gbeamSfp1 2}
+
+sfp1ExtOptions 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Options"
+    ::= { gbeamSfp1Ext 1 }
+
+sfp1ExtBrMax 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP BR Max"
+    ::= { gbeamSfp1Ext 2 }
+
+sfp1ExtBrMin 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP BR Min"
+    ::= { gbeamSfp1Ext 3 }
+
+sfp1ExtVendorSN 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Vendor SN"
+    ::= { gbeamSfp1Ext 4 }
+
+sfp1ExtYearCode 		OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Year Date Code"
+    ::= { gbeamSfp1Ext 5 }
+
+sfp1ExtMonthCode 		OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Month Date Code"
+    ::= { gbeamSfp1Ext 6 }
+
+sfp1ExtDayCode 		OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Day Date Code"
+    ::= { gbeamSfp1Ext 7 }
+
+sfp1ExtLotCode 		OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..2))
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Lot Code"
+    ::= { gbeamSfp1Ext 8 }
+
+sfp1ExtDiagType 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Diagnostics Type"
+    ::= { gbeamSfp1Ext 9 }
+
+sfp1ExtEnhancedOptions 	OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Enhanced Options"
+    ::= { gbeamSfp1Ext 10 }
+
+sfp1ExtSff8472Compliance 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			undefined(0),
+			rev9pt3ofSFF8472(1),
+			rev9pt4ofSFF8472(2)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP SFF-8472 Compliance"
+    ::= { gbeamSfp1Ext 11 }
+
+gbeamSfp1Threshold	OBJECT IDENTIFIER ::= {gbeamSfp1 3}
+
+sfp1ThresholdTempHiAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Temp High Alarm in C"
+    ::= { gbeamSfp1Threshold 1 }
+
+sfp1ThresholdTempLoAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Temp Low Alarm in C"
+    ::= { gbeamSfp1Threshold 2 }
+
+sfp1ThresholdTempHiWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Temp Hi Warning in C"
+    ::= { gbeamSfp1Threshold 3 }
+
+sfp1ThresholdTempLoWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Temp Low Warning in C"
+    ::= { gbeamSfp1Threshold 4 }
+
+sfp1ThresholdVccHiAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Voltage Hi Alarm in mV"
+    ::= { gbeamSfp1Threshold 5 }
+
+sfp1ThresholdVccLoAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Voltage Low Alarm in mV"
+    ::= { gbeamSfp1Threshold 6 }
+
+sfp1ThresholdVccHiWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Voltage Hi Warning in mV"
+    ::= { gbeamSfp1Threshold 7 }
+
+sfp1ThresholdVccLoWa	 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Voltage Low Warning in mV"
+    ::= { gbeamSfp1Threshold 8 }
+
+sfp1ThresholdTxBiasHiAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Bias Hi Alarm in mA"
+    ::= { gbeamSfp1Threshold 9 }
+
+sfp1ThresholdTxBiasLoAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Bias Low Alarm in mA"
+    ::= { gbeamSfp1Threshold 10 }
+
+sfp1ThresholdTxBiasHiWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Bias Hi Warning in mA"
+    ::= { gbeamSfp1Threshold 11 }
+
+sfp1ThresholdTxBiasLoWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Bias Low Warning in mA"
+    ::= { gbeamSfp1Threshold 12 }
+
+sfp1ThresholdTxPowerHiAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Tx Power Hi Alarm in uW"
+    ::= { gbeamSfp1Threshold 13 }
+
+sfp1ThresholdTxPowerLoAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Tx Power Low Alarm in uW"
+    ::= { gbeamSfp1Threshold 14 }
+
+sfp1ThresholdTxPowerHiWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Tx Power Hi Warning in uW"
+    ::= { gbeamSfp1Threshold 15 }
+
+sfp1ThresholdTxPowerLoWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Tx Power Low Warning in uW"
+    ::= { gbeamSfp1Threshold 16 }
+
+sfp1ThresholdRxPowerHiAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Rx Power Hi Alarm in uW"
+    ::= { gbeamSfp1Threshold 17 }
+
+sfp1ThresholdRxPowerLoAl 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Rx Power Low Alarm in uW"
+    ::= { gbeamSfp1Threshold 18 }
+
+sfp1ThresholdRxPowerHiWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Rx Power Hi Warning in uW"
+    ::= { gbeamSfp1Threshold 19 }
+
+sfp1ThresholdRxPowerLoWa 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"SFP Rx Power Low Warning in uW"
+    ::= { gbeamSfp1Threshold 20 }
+
+gbeamSfp1Calib		OBJECT IDENTIFIER ::= {gbeamSfp1 4}
+
+sfp1CalibRxPwr4 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Single precision FPt Rx optical power"
+    ::= { gbeamSfp1Calib 1 }
+
+sfp1CalibRxPwr3 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Single precision Fpt Rx optical power"
+    ::= { gbeamSfp1Calib 2 }
+
+sfp1CalibRxPwr2 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Single precision Fpt Rx optical power"
+    ::= { gbeamSfp1Calib 3 }
+
+sfp1CalibRxPwr1 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Single precision Fpt Rx optical power"
+    ::= { gbeamSfp1Calib 4 }
+
+sfp1CalibRxPwr0 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Single precision Fpt Rx optical power"
+    ::= { gbeamSfp1Calib 5 }
+
+sfp1CalibTxISlope 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (unsigned) laser bias current"
+    ::= { gbeamSfp1Calib 6 }
+
+sfp1CalibTxIOffset 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (signed 2's comp) laser bias current"
+    ::= { gbeamSfp1Calib 7 }
+
+sfp1CalibTxPwrSlope 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (unsigned) TX output power"
+    ::= { gbeamSfp1Calib 8 }
+
+sfp1CalibTxPwrOffset 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (signed 2's comp) TX output power"
+    ::= { gbeamSfp1Calib 9 }
+
+sfp1CalibTSlope 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (unsigned) internal module temperature"
+    ::= { gbeamSfp1Calib 10 }
+
+sfp1CalibTOffset OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (signed 2's comp) internal module temperature"
+    ::= { gbeamSfp1Calib 11 }
+
+sfp1CalibVSlope 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (unsigned) internal module supply voltage"
+    ::= { gbeamSfp1Calib 12 }
+
+sfp1CalibVOffset 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"Fixed decimal (signed 2's comp) internal module supply voltage"
+    ::= { gbeamSfp1Calib 13 }
+
+gbeamSfp1Ad		OBJECT IDENTIFIER ::= {gbeamSfp1 5}
+
+sfp1AdTemp 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Measured Temperature in C"
+    ::= { gbeamSfp1Ad 1 }
+
+sfp1AdVcc 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Measured Voltage in mV"
+    ::= { gbeamSfp1Ad 2 }
+
+sfp1AdTxBias 			OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Measured Tx Bias Current in mA"
+    ::= { gbeamSfp1Ad 3 }
+
+sfp1AdTxPower 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Measured Tx Output Power in uW"
+    ::= { gbeamSfp1Ad 4 }
+
+sfp1AdRxPower 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Measured Rx received Power in uW"
+    ::= { gbeamSfp1Ad 5 }
+
+gbeamSfp1Status		OBJECT IDENTIFIER ::= {gbeamSfp1 6}
+
+sfp1StatusTxDisableState 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			off(0),
+			on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"State of Tx Disable Input Pin"
+    ::= { gbeamSfp1Status 1 }
+
+sfp1StatusRxRateSelectState 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			off(0),
+			on(1)
+			}
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"State of SFP Rx Rate Select Input Pin"
+    ::= { gbeamSfp1Status 2 }
+
+sfp1StatusSoftRxRateSelect 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			off(0),
+			on(1)
+			}
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Software Rx Rate Select"
+    ::= { gbeamSfp1Status 3 }
+
+sfp1StatusTxFault 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			off(0),
+			on(1)
+			}
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION 	"State of Tx Fault Output Pin"
+    ::= { gbeamSfp1Status 4 }
+
+sfp1StatusLos 			OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			off(0),
+			on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"State of LOS Output Pin"
+    ::= { gbeamSfp1Status 5 }
+
+sfp1StatusDataReadyBar 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			off(0),
+			on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Transceiver power and data ready"
+    ::= { gbeamSfp1Status 6 }
+
+sfp1StatusSignalErr               OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Signal Alarm Status for SFP1"
+    ::= { gbeamSfp1Status 7 }
+
+gbeamSfp1Flag		OBJECT IDENTIFIER ::= {gbeamSfp1 7}
+
+sfp1FlagTempHiAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Temperature over Hi Alarm Threshold"
+    ::= { gbeamSfp1Flag 1 }
+
+sfp1FlagTempLoAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Temperature under Lo Alarm Threshold"
+    ::= { gbeamSfp1Flag 2 }
+
+sfp1FlagVccHiAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Voltage over Hi Alarm Threshold"
+    ::= { gbeamSfp1Flag 3 }
+
+sfp1FlagVccLoAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Voltage under Lo Alarm Threshold"
+    ::= { gbeamSfp1Flag 4 }
+
+sfp1FlagTxBiasHiAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Bias Current over Hi Alarm Threshold"
+    ::= { gbeamSfp1Flag 5 }
+
+sfp1FlagTxBiasLoAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Bias Current under Lo Alarm Threshold"
+    ::= { gbeamSfp1Flag 6 }
+
+sfp1FlagTxPowerHiAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Power over Hi Alarm Threshold"
+    ::= { gbeamSfp1Flag 7 }
+
+sfp1FlagTxPowerLoAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Power under Lo Alarm Threshold"
+    ::= { gbeamSfp1Flag 8 }
+
+sfp1FlagRxPowerHiAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Rx Power over Hi Alarm Threshold"
+    ::= { gbeamSfp1Flag 9 }
+
+sfp1FlagRxPowerLoAl 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Rx Power under Lo Alarm Threshold"
+    ::= { gbeamSfp1Flag 10 }
+
+sfp1FlagTempHiWa 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Temperature over Hi Warning Threshold"
+    ::= { gbeamSfp1Flag 11 }
+
+sfp1FlagTempLoWa 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Temperature under Lo Warning Threshold"
+    ::= { gbeamSfp1Flag 12 }
+
+sfp1FlagVccHiWa 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Voltage over Hi Warning Threshold"
+    ::= { gbeamSfp1Flag 13 }
+
+sfp1FlagVccLoWa 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Voltage under Lo Warning Threshold"
+    ::= { gbeamSfp1Flag 14 }
+
+sfp1FlagTxBiasHiWa		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Bias Current over Hi Warning Threshold"
+    ::= { gbeamSfp1Flag 15 }
+
+sfp1FlagTxBiasLoWa	 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Bias Current under Lo Warning Threshold"
+    ::= { gbeamSfp1Flag 16 }
+
+sfp1FlagTxPowerHiWa	 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Power over Hi Warning Threshold"
+    ::= { gbeamSfp1Flag 17 }
+
+sfp1FlagTxPowerLoWa	 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Tx Power under Lo Warning Threshold"
+    ::= { gbeamSfp1Flag 18 }
+
+sfp1FlagRxPowerHiWa	 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Rx Power over Hi Warning Threshold"
+    ::= { gbeamSfp1Flag 19 }
+
+sfp1FlagRxPowerLoWa 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			inactive(0),
+			active(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Rx Power under Lo Warning Threshold"
+    ::= { gbeamSfp1Flag 20 }
+
+sfp1FlagSignalErr               OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Signal Alarm Flag for SFP1"
+    ::= { gbeamSfp1Flag 21 }
+
+gbeamSfp1Vendormem	OBJECT IDENTIFIER ::= {gbeamSfp1 8}
+
+sfp1VendormemVendorSpec 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Vendor Specific"
+    ::= { gbeamSfp1Vendormem 1 }
+
+gbeamSfp1gbeam		OBJECT IDENTIFIER ::= {gbeamSfp1 9}
+
+sfp1gbeamDsLolr 			OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			undefined(2)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"RX Optical Loss of Lock. Indication of CDR"
+    ::= { gbeamSfp1gbeam 2 }   
+
+sfp1gbeamDsLolt 			OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			undefined(2)
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"TX Optical Loss of Lock"
+    ::= { gbeamSfp1gbeam 3 } 
+
+gbeamSfp1Trap	OBJECT IDENTIFIER ::= {gbeamSfp1 10}
+
+sfp1TrapTempHiAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Temp over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 1 }
+
+sfp1TrapTempHiAlTrActive	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 2 }
+
+sfp1TrapTempHiAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 3 }
+
+sfp1TrapTempLoAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D Trap for Temp under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 4 }
+
+sfp1TrapTempLoAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 5 }
+
+sfp1TrapTempLoAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 6 }
+
+sfp1TrapVccHiAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Volt over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 7 }
+
+sfp1TrapVccHiAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Voltage over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 8 }
+
+sfp1TrapVccHiAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Voltage over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 9 }
+
+sfp1TrapVccLoAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Volt under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 10 }
+
+sfp1TrapVccLoAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Voltage under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 11 }
+
+sfp1TrapVccLoAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Voltage under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 12 }
+
+sfp1TrapTxBiasHiAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Current over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 13 }
+
+sfp1TrapTxBiasHiAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Tx Bias Current over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 14 }
+
+sfp1TrapTxBiasHiAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Bias Current over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 15 }
+
+sfp1TrapTxBiasLoAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Current under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 16 }
+
+sfp1TrapTxBiasLoAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Tx Bias Current under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 17 }
+
+sfp1TrapTxBiasLoAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Bias Current under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 18 }
+
+sfp1TrapTxPowerHiAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP TxPower over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 19 }
+
+sfp1TrapTxPowerHiAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Tx Power over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 20 }
+
+sfp1TrapTxPowerHiAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Power over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 21 }
+
+sfp1TrapTxPowerLoAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP TxPower under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 22 }
+
+sfp1TrapTxPowerLoAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Tx Power under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 23 }
+
+sfp1TrapTxPowerLoAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Power under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 24 }
+
+sfp1TrapRxPowerHiAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP RxPower over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 25 }
+
+sfp1TrapRxPowerHiAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Rx Power over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 26 }
+
+sfp1TrapRxPowerHiAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Rx Power over Hi Alarm Threshold"
+    ::= { gbeamSfp1Trap 27 }
+
+sfp1TrapRxPowerLoAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP RxPower under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 28 }
+
+sfp1TrapRxPowerLoAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Rx Power under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 29 }
+
+sfp1TrapRxPowerLoAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Rx Power under Lo Alarm Threshold"
+    ::= { gbeamSfp1Trap 30 }
+
+sfp1TrapTempHiWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Temp over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 31 }
+
+sfp1TrapTempHiWaTrActive	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 32 }
+
+sfp1TrapTempHiWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 33 }
+
+sfp1TrapTempLoWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Trap for Temp under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 34 }
+
+sfp1TrapTempLoWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 35 }
+
+sfp1TrapTempLoWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 36 }
+
+sfp1TrapVccHiWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Volt over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 37 }
+
+sfp1TrapVccHiWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Voltage over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 38 }
+
+sfp1TrapVccHiWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Voltage over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 39 }
+
+sfp1TrapVccLoWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Volt under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 40 }
+
+sfp1TrapVccLoWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Voltage under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 41 }
+
+sfp1TrapVccLoWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdVcc }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Voltage under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 42 }
+
+sfp1TrapTxBiasHiWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Current over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 43 }
+
+sfp1TrapTxBiasHiWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for TxBias Current over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 44 }
+
+sfp1TrapTxBiasHiWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for TxBias Current over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 45 }
+
+sfp1TrapTxBiasLoWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Current under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 46 }
+
+sfp1TrapTxBiasLoWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Current under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 47 }
+
+sfp1TrapTxBiasLoWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxBias }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Bias Current under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 48 }
+
+sfp1TrapTxPowerHiWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP TxPower over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 49 }
+
+sfp1TrapTxPowerHiWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Tx Power over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 50 }
+
+sfp1TrapTxPowerHiWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Power over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 51 }
+
+sfp1TrapTxPowerLoWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP TxPower under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 52 }
+
+sfp1TrapTxPowerLoWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Tx Power under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 53 }
+
+sfp1TrapTxPowerLoWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdTxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Tx Power under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 54 }
+
+sfp1TrapRxPowerHiWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP RxPower over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 55 }
+
+sfp1TrapRxPowerHiWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Rx Power over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 56 }
+
+sfp1TrapRxPowerHiWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Rx Power over Hi Warning Threshold"
+    ::= { gbeamSfp1Trap 57 }
+
+sfp1TrapRxPowerLoWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP RxPower under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 58 }
+
+sfp1TrapRxPowerLoWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Rx Power under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 59 }
+
+sfp1TrapRxPowerLoWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1AdRxPower }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for Rx Power under Lo Warning Threshold"
+    ::= { gbeamSfp1Trap 60 }
+
+sfp1TrapSignalErrTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP SFP1 Signal Alarm Status"
+    ::= { gbeamSfp1Trap 61 }
+
+sfp1TrapSignalErrTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1StatusSignalErr }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for SFP1 Signal Alarm Status"
+    ::= { gbeamSfp1Trap 62 }
+
+sfp1TrapSignalErrTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ sfp1StatusSignalErr }
+    STATUS              current
+    DESCRIPTION 	"Cancel Trap for SFP1 Signal Alarm Status"
+    ::= { gbeamSfp1Trap 63 }
+
+gbeamRad		OBJECT IDENTIFIER ::= {gbeam 2}
+
+gbeamRadBase 		OBJECT IDENTIFIER ::= {gbeamRad 1}
+
+radBaseCenterFreq 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			low(0), 
+			high(1) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION		"Current Radio Center Frequency"
+    ::= { gbeamRadBase 1 }
+
+radBaseAntennaPol 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			vertical(1), 
+			horizontal(2),
+			dual(3) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Antenna Polarization"
+    ::= { gbeamRadBase 2 }
+
+radBaseAntennaType 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			at_50dBiParabolicwithShroud(1), 
+			at_50dBiFlat(2), 
+			at_45dBiParabolicwithShroud(3), 
+			at_45dBiFlat(4) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Antenna Type"
+    ::= { gbeamRadBase 3 }
+
+radBaseTransceiver 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			bpsk(1), 
+			qpsk(2), 
+			gmsk(3), 
+			ofdm(4) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Channel Compatibility"
+    ::= { gbeamRadBase 4 }
+
+radBaseEncoding 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			en_8B10B(1), 
+			en_64B66B(2), 
+			en_Scrambled(3), 
+			en_FramedandScrambled(4), 
+			en_FramedandScrambledwithFEC(5) 
+			}
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Channel Coding"
+    ::= { gbeamRadBase 5 }
+
+radBaseBitRate 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Bit Rate"
+    ::= { gbeamRadBase 6 }
+
+radBaseChLength 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Length supported by Channel"
+    ::= { gbeamRadBase 7 }
+
+radBaseVendorName 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor Name"
+    ::= { gbeamRadBase 8 }
+
+radBaseVendorOUI 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor OUI"
+    ::= { gbeamRadBase 9 }
+
+radBaseVendorPN 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor PN"
+    ::= { gbeamRadBase 10 }
+
+radBaseVendorRev 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-only
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor Rev"
+    ::= { gbeamRadBase 11 }
+
+radBaseControlPCBType 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			unknown(0),
+			rcm(7),
+			cdm_I(15),
+			rcmRevc(6),
+			cdm_II(14)
+		}
+    MAX-ACCESS    read-only
+    STATUS      	current
+    DESCRIPTION 	"Type of Board"
+    ::= { gbeamRadBase 12 }
+
+gbeamRadExt		OBJECT IDENTIFIER ::= {gbeamRad 2}
+
+radExtOptions			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Diagnostic Options"
+    ::= { gbeamRadExt 1 }
+
+radExtVendorSN		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Vendor SN"
+    ::= { gbeamRadExt 2 }
+
+radExtYearCode                OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Year Date Code"
+    ::= { gbeamRadExt 3 }
+
+radExtMonthCode               OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Month Date Code"
+    ::= { gbeamRadExt 4 }
+
+radExtDayCode                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Day Date Code"
+    ::= { gbeamRadExt 5 }
+
+radExtLotCode                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..2))
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Lot Code"
+    ::= { gbeamRadExt 6 }
+
+radExtDiagType		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Diagnostics Type"
+    ::= { gbeamRadExt 7 }
+
+radExtDiagControl		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Diagnostics Control"
+    ::= { gbeamRadExt 8 }
+
+gbeamRadThreshold	OBJECT IDENTIFIER ::= {gbeamRad 3}
+
+radThresholdTempHiAl		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"RAD Temp Hi Alarm Threshold in Deg Celsius"
+    ::= { gbeamRadThreshold 1 }
+
+radThresholdTempLoAl		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RAD Temp Low Alarm Threshold in Deg Celsius"
+    ::= { gbeamRadThreshold 2 }
+
+radThresholdTempHiWa		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RAD Temp Hi Warning Threshold in Deg Celsius"
+    ::= { gbeamRadThreshold 3 }
+
+radThresholdTempLoWa		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RAD Temp Low Warning Threshold in Deg Celsius"
+    ::= { gbeamRadThreshold 4 }
+
+gbeamRadDiag		OBJECT IDENTIFIER ::= {gbeamRad 4}
+
+radDiagTemp			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Temp in Degrees Celsius"
+    ::= { gbeamRadDiag 1 }
+
+radDiagTxPower			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"TxPower Reading in mW"
+    ::= { gbeamRadDiag 17 }
+
+radDiagRxPower			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"RxPower Reading in mW"
+    ::= { gbeamRadDiag 18 }
+
+radDiagVDACREF			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"VDACREF Reading in mV"
+    ::= { gbeamRadDiag 21 }
+
+gbeamRadStatus		OBJECT IDENTIFIER ::= {gbeamRad 5}
+
+radStatusLocalBER		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Local Bit Error Rate"
+    ::= { gbeamRadStatus 1 }     
+
+radStatusRemoteBER 		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Bit Error Rate"
+    ::= { gbeamRadStatus 2 } 
+
+radStatusFrameSync               OBJECT-TYPE
+    SYNTAX		INTEGER {
+			inactive(0),
+			active(1),
+			unknown(-9999)
+			}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Frame Sync"
+    ::= { gbeamRadStatus 3 } 
+
+radStatusRemoteCommLinkStatus    OBJECT-TYPE
+    SYNTAX		INTEGER {
+			inactive(0),
+			active(1),
+			unknown(-9999)
+			}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Remote Radio Comm Link Status"
+    ::= { gbeamRadStatus 4 } 
+
+radStatusLocalFER		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Local Frame Error Rate"
+    ::= { gbeamRadStatus 5 }     
+
+radStatusRemoteFER		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Remote Frame Error Rate"
+    ::= { gbeamRadStatus 6 }     
+
+radStatusRxDataPathAlarm		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+                        off(0),
+                        on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"RX DataPath Alarm"
+    ::= { gbeamRadStatus 7 }     
+
+radStatusTxDataPathAlarm		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+                        off(0),
+                        on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"TX DataPath Alarm"
+    ::= { gbeamRadStatus 8 }     
+
+radStatusRadioSignalAlarm	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+                        off(0),
+                        on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Signal Fault Flag"
+    ::= { gbeamRadStatus 10 }     
+
+radStatusCustomerSignalAlarm 	OBJECT-TYPE
+    SYNTAX      	INTEGER {
+                        off(0),
+                        on(1)
+			}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Customer Signal Fault Flag"
+    ::= { gbeamRadStatus 11 }     
+
+gbeamRadControl		OBJECT IDENTIFIER ::= {gbeamRad 6}
+
+radControlcOut1			OBJECT-TYPE
+    SYNTAX              Integer32 
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Last user set value of B1 bit of LMX2354 IFN"
+    ::= { gbeamRadControl 2 }     
+
+radControlcOut0			OBJECT-TYPE
+    SYNTAX              Integer32 
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Last user set value of B0 bit of LMX2354 IFN"
+    ::= { gbeamRadControl 3 }     
+
+radControlNNUMB			OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..7))
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Control NNUMB parameter"
+    ::= { gbeamRadControl 4 }     
+
+radControlLowBandSynthCmd 	OBJECT-TYPE
+    SYNTAX              DisplayString 
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Control LowBandSynthCmd parameter"
+    ::= { gbeamRadControl 10 }     
+
+radControlHiBandSynthCmd 		OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Radio Control HiBandSynthCmd parameter"
+    ::= { gbeamRadControl 11 }   
+
+gbeamRadFlag		OBJECT IDENTIFIER ::= {gbeamRad 7}
+
+radFlagTempHiAl		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0), 
+                        active(1) 
+                        }
+    MAX-ACCESS          read-only 
+    STATUS		current
+    DESCRIPTION		"RAD Temp Hi Alarm"
+    ::= { gbeamRadFlag 1 }
+
+radFlagTempLoAl		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0), 
+                        active(1) 
+                        }
+    MAX-ACCESS          read-only 
+    STATUS		current
+    DESCRIPTION		"RAD Temp Low Alarm"
+    ::= { gbeamRadFlag 2 }
+
+radFlagTempHiWa		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0), 
+                        active(1) 
+                        }
+    MAX-ACCESS          read-only 
+    STATUS		current
+    DESCRIPTION		"RAD Temp Hi Warning"
+    ::= { gbeamRadFlag 3 }
+
+radFlagTempLoWa		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0), 
+                        active(1) 
+                        }
+    MAX-ACCESS          read-only 
+    STATUS		current
+    DESCRIPTION		"RAD Temp Low Warning"
+    ::= { gbeamRadFlag 4 }
+
+radFlagCostasLock              OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Costas Lock Alarm Flag"
+    ::= { gbeamRadFlag 73 }
+
+radFlagDsSynthOk               OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Ext. Synth Fault Flag"
+    ::= { gbeamRadFlag 74 }
+
+radFlagCostasLoopLock          OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Costas Loop Lock Alarm Flag"
+    ::= { gbeamRadFlag 75 }
+
+radFlagTxDataPath              OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Tx Data Path Alarm Flag"
+    ::= { gbeamRadFlag 76 }
+
+radFlagRxDataPath              OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Rx Data Path Alarm Flag"
+    ::= { gbeamRadFlag 77 }
+
+radFlagRadioSignal             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Radio Signal Alarm Flag"
+    ::= { gbeamRadFlag 78 }
+
+radFlagCustomerSignal          OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Customer Signal Alarm Flag"
+    ::= { gbeamRadFlag 79 }
+
+radFlagDsRadioPresence         OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Radio Presence Alarm Flag"
+    ::= { gbeamRadFlag 80 }
+
+radFlagFPGAInitOK         OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        initialized(0),
+                        non_initialized(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "FPGA Initialization Flag"
+    ::= { gbeamRadFlag 81 }
+
+gbeamRadAd		OBJECT IDENTIFIER ::= {gbeamRad 8}
+
+radAdAsRssi			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Analog RSSI in mV"
+    ::= { gbeamRadAd 5 }
+
+radAdAsRxTemp		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"RX Temperature in degrees C"
+    ::= { gbeamRadAd 6 }
+
+radAdAcAgc			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Automatic Gain Control Voltage in mV"
+    ::= { gbeamRadAd 17 }
+
+radAdAcTxBiasDACA		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Tx Bias DAC A Setting"
+    ::= { gbeamRadAd 18 }
+
+radAdAcTxBiasDACB		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Tx Bias DAC B Setting"
+    ::= { gbeamRadAd 19 }
+
+radAdAsTxBiasADC		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Tx Bias ADC Setting"
+    ::= { gbeamRadAd 20 }
+
+radAdAsTxTemp		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Radio Tx Temp in degrees C"
+    ::= { gbeamRadAd 21 }
+
+radAdAsCostasLvaI		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"COSTAS LVA I"
+    ::= { gbeamRadAd 23 }
+
+radAdAsCostasLvaQ		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"COSTAS LVA Q"
+    ::= { gbeamRadAd 24 }
+
+radAdAsCostasTune            OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"COSTAS Tuning Voltage"
+    ::= { gbeamRadAd 25 }
+
+radAdAsModLevel            OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Tx IF Transmit Level"
+    ::= { gbeamRadAd 26 }
+
+radAdAsModRefL            OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Tx IF Reflected Level"
+    ::= { gbeamRadAd 27 }
+
+radAdAsRslAdc            OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Rx IF Received Level"
+    ::= { gbeamRadAd 28 }
+
+radAdAcModOffset            OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Modulation Buffer Offset Voltage"
+    ::= { gbeamRadAd 29 }
+
+gbeamRadDs		OBJECT IDENTIFIER ::= {gbeamRad 9}
+
+radDsDsSynthOK		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"General Synth Status"
+    ::= { gbeamRadDs 2 }
+
+radDsDsCostasLock            OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Training Synthesizer Lock Status"
+    ::= { gbeamRadDs 4 }
+
+radDsDsRadioPresence         OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Radio Mod. & Demodulator Board Presence"
+    ::= { gbeamRadDs 5 }
+
+radDsDsCostasLoopLock        OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Costas PLL Lock Status"
+    ::= { gbeamRadDs 6 }
+
+radDsFPGAInitOK		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        non_initialized(0),
+                        initialized(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"FPGA Initialization Status"
+    ::= { gbeamRadDs 7 }
+
+gbeamRadTrap		OBJECT IDENTIFIER ::= {gbeamRad 10}
+
+radTrapTempHiAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Temp over Hi Alarm Threshold"
+    ::= { gbeamRadTrap 1 }
+
+radTrapTempHiAlTrActive	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature over Hi Alarm Threshold"
+    ::= { gbeamRadTrap 2 }
+
+radTrapTempHiAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature over Hi Alarm Threshold"
+    ::= { gbeamRadTrap 3 }
+
+radTrapTempLoAlTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Trap for Temperature under Lo Alarm Threshold"
+    ::= { gbeamRadTrap 4 }
+
+radTrapTempLoAlTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature under Lo Alarm Threshold"
+    ::= { gbeamRadTrap 5 }
+
+radTrapTempLoAlTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature under Lo Alarm Threshold"
+    ::= { gbeamRadTrap 6 }
+
+radTrapTempHiWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"E/D TRAP Temperature over Hi Warning Threshold"
+    ::= { gbeamRadTrap 109 }
+
+radTrapTempHiWaTrActive	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature over Hi Warning Threshold"
+    ::= { gbeamRadTrap 110 }
+
+radTrapTempHiWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature over Hi Warning Threshold"
+    ::= { gbeamRadTrap 111 }
+
+radTrapTempLoWaTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Trap for Temperature under Lo Warning Threshold"
+    ::= { gbeamRadTrap 112 }
+
+radTrapTempLoWaTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Temperature under Lo Warning Threshold"
+    ::= { gbeamRadTrap 113 }
+
+radTrapTempLoWaTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ radDiagTemp }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Temperature under Lo Warning Threshold"
+    ::= { gbeamRadTrap 114 }
+
+gbeamRadAtpc		OBJECT IDENTIFIER ::= {gbeamRad 11}
+
+radAtpcATPCEnable		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Enables/Disables ATPC"
+    ::= { gbeamRadAtpc 1 }
+
+radAtpcNomRadioTxPwr		OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Nominal Radio Tx Pwr in dBm"
+    ::= { gbeamRadAtpc 2 }
+
+radAtpcCurrRadioTxPwr		OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Current Radio Tx Pwr in dBm"
+    ::= { gbeamRadAtpc 3 }
+
+radAtpcCurrRadioRxPwr     OBJECT-TYPE
+    SYNTAX             DisplayString
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Current Radio Rx Pwr in dBm"
+    ::= { gbeamRadAtpc 4 }
+
+radAtpcATPCDelta            OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Delta value for Inc/Dec of Tx Pwr in dBm"
+    ::= { gbeamRadAtpc 5 }
+
+radAtpcRxPwrMin         OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Low threshold for radio Rx Pwr in dBm"
+    ::= { gbeamRadAtpc 6 }
+
+radAtpcRxPwrMax        OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "High threshold for radio Rx Pwr in dBm"
+    ::= { gbeamRadAtpc 7 }
+
+radAtpcATPCLoopTimer 		OBJECT-TYPE
+    SYNTAX              Integer32
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Tuning parameter for ATPC update loop in ms"
+    ::= { gbeamRadAtpc 8 }
+
+radAtpcATPCHeartbeatPeriod 		OBJECT-TYPE
+    SYNTAX              Integer32
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"ATPC heartbeat period in sec"
+    ::= { gbeamRadAtpc 9 }
+
+radAtpcATPCRxCautionOffset 	OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Rx Pwr caution thresh. offset in dBm"
+    ::= { gbeamRadAtpc 10 }
+
+radAtpcATPCElevTxPwrOffset 	OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Offset above Nominal Tx Pwr in dBm"
+    ::= { gbeamRadAtpc 11 }
+
+gbeamStat		OBJECT IDENTIFIER 	::= {gbeam 3}
+
+gbeamStatRev		OBJECT IDENTIFIER	::= {gbeamStat 1}
+
+statRevHwCurrentBoardRev	OBJECT-TYPE
+		SYNTAX      	INTEGER {
+			unknown(0),
+			rcm(7),
+			cdm_I(15),
+			rcmRevc(6),
+			cdm_II(14)
+		}
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Current Board"
+    ::= { gbeamStatRev 2 }
+
+statRevSwBootRev		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Bootloader code"
+    ::= { gbeamStatRev 3 }
+
+statRevSwCurrentAppRev		OBJECT-TYPE
+    SYNTAX              DisplayString 
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Current App code"
+    ::= { gbeamStatRev 4 }
+
+statRevSwBackupAppRev		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Backup App code"
+    ::= { gbeamStatRev 5 }
+
+statRevFPGARev			OBJECT-TYPE
+    SYNTAX      	OCTET STRING
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Rev of FPGA Code"
+    ::= { gbeamStatRev 6 }
+
+statRevConfigRev		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"XML Database Configuration Revision"
+    ::= { gbeamStatRev 7 }
+
+statRevSwSynthRev		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Synthesizer"
+    ::= { gbeamStatRev 8 }
+
+statRevSwTxBiasRev		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Tx Bias Board"
+    ::= { gbeamStatRev 9 }
+
+statRevSwRxBiasRev		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Rev of Rx Bias Board"
+    ::= { gbeamStatRev 10 }
+
+gbeamStatPSM		OBJECT IDENTIFIER	::= {gbeamStat 2}
+
+statPSMPSMFuse1Alarm		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"PSM Fuse1 Alarm Status"
+    ::= { gbeamStatPSM 1 }
+
+statPSMPSMFuse2Alarm		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"PSM Fuse2 Alarm Status"
+    ::= { gbeamStatPSM 2 }
+
+statPSMPSMConverter1Alarm	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"PSM Conv1 Alarm"
+    ::= { gbeamStatPSM 3 }
+
+statPSMPSMConverter2Alarm	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"PSM Conv2 Alarm"
+    ::= { gbeamStatPSM 4 }
+
+gbeamStatAlarm		OBJECT IDENTIFIER	::= {gbeamStat 3}
+
+statAlarmSummaryAlarm		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Card Summary Alarm Status/Bitmap"
+    ::= { gbeamStatAlarm 1 }
+
+statAlarmSummaryAlarmTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP Summary Alarm"
+    ::= { gbeamStatAlarm 2 }
+
+statAlarmSummaryAlarmTrActive	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmSummaryAlarm }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Summary Alarm"
+    ::= { gbeamStatAlarm 3 }
+
+statAlarmSummaryAlarmTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmSummaryAlarm }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Summary Alarm"
+    ::= { gbeamStatAlarm 4 }
+
+statAlarmGroupAlarmSfp1		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Group Summary Alarm Status for SFP1"
+    ::= { gbeamStatAlarm 5 }
+
+statAlarmGroupAlarmSfp1TrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP Group Alarm SFP1"
+    ::= { gbeamStatAlarm 6 }
+
+statAlarmGroupAlarmSfp1TrActive	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmSfp1 }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Group Alarm SFP1"
+    ::= { gbeamStatAlarm 7 }
+
+statAlarmGroupAlarmSfp1TrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmSfp1 }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Group Alarm SFP1"
+    ::= { gbeamStatAlarm 8 }
+
+statAlarmGroupAlarmRad1		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Group Summary Alarm Status for RADIO1"
+    ::= { gbeamStatAlarm 13 }
+
+statAlarmGroupAlarmRad1TrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP Group Alarm RADIO1"
+    ::= { gbeamStatAlarm 14 }
+
+statAlarmGroupAlarmRad1TrActive	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmRad1 }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Group Alarm RADIO1"
+    ::= { gbeamStatAlarm 15 }
+
+statAlarmGroupAlarmRad1TrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmRad1 }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Group Alarm RADIO1"
+    ::= { gbeamStatAlarm 16 }
+
+statAlarmGroupAlarmRad2		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Group Summary Alarm Status for RADIO2"
+    ::= { gbeamStatAlarm 17 }
+
+statAlarmGroupAlarmRad2TrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP Group Alarm RADIO2"
+    ::= { gbeamStatAlarm 18 }
+
+statAlarmGroupAlarmRad2TrActive	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmRad2 }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Group Alarm RADIO2"
+    ::= { gbeamStatAlarm 19 }
+
+statAlarmGroupAlarmRad2TrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmRad2 }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Group Alarm RADIO2"
+    ::= { gbeamStatAlarm 20 }
+
+statAlarmGroupAlarmRad3		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Group Summary Alarm Status for RADIO3"
+    ::= { gbeamStatAlarm 21 }
+
+statAlarmGroupAlarmRad3TrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP Group Alarm RADIO3"
+    ::= { gbeamStatAlarm 22 }
+
+statAlarmGroupAlarmRad3TrActive	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmRad3 }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Group Alarm RADIO3"
+    ::= { gbeamStatAlarm 23 }
+
+statAlarmGroupAlarmRad3TrCancel 	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmRad3 }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Group Alarm RADIO3"
+    ::= { gbeamStatAlarm 24 }
+
+statAlarmGroupAlarmMisc		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-only
+    STATUS		current
+    DESCRIPTION		"Group Summary Alarm Status for Miscellaneous"
+    ::= { gbeamStatAlarm 25 }
+
+statAlarmGroupAlarmMiscTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP Group Miscellaneous"
+    ::= { gbeamStatAlarm 26 }
+
+statAlarmGroupAlarmMiscTrActive	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmGroupAlarmMisc }
+    STATUS 		current
+    DESCRIPTION 	"Active Trap for Group Miscellaneous"
+    ::= { gbeamStatAlarm 27 }
+
+statAlarmGroupAlarmMiscTrCancel 	NOTIFICATION-TYPE
+    OBJECTS		 { statAlarmGroupAlarmMisc }
+    STATUS 		current
+    DESCRIPTION 	"Cancel Trap for Group Miscellaneous"
+    ::= { gbeamStatAlarm 28 }
+
+statAlarmOnChangeTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis TRAP upon Change on the Radio"
+    ::= { gbeamStatAlarm 29 }
+
+statAlarmOnChangeTrActive 	NOTIFICATION-TYPE
+    STATUS 		current
+    DESCRIPTION 	"Trap upon Change on the Radio"
+    ::= { gbeamStatAlarm 30 }
+
+statAlarmShellLoginFailTrEnable 	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"En/Dis Trap on Bash/CLI Login Authentication Failure"
+    ::= { gbeamStatAlarm 32 }
+
+statAlarmShellLoginFailTrActive 	NOTIFICATION-TYPE
+    OBJECTS		{ statAlarmShellLoginFail }
+    STATUS              current
+    DESCRIPTION 	"Active Trap for Bash/CLI Login Authentication Failure"
+    ::= { gbeamStatAlarm 33 }
+
+statAlarmShellLoginSuccessTrEnable  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "En/Dis Trap on Bash/CLI Login Authentication Success"
+    ::= { gbeamStatAlarm 35 }
+
+statAlarmShellLoginSuccessTrActive  NOTIFICATION-TYPE
+    OBJECTS           { statAlarmShellLoginSuccess }
+    STATUS              current
+    DESCRIPTION         "Active Trap for Bash/CLI Login Authentication Success"
+    ::= { gbeamStatAlarm 36 }
+
+gbeamStatSfp		OBJECT IDENTIFIER	::= {gbeamStat 5}
+
+statSfpSfp1Status 		OBJECT-TYPE
+    SYNTAX      	INTEGER {
+			installed(0), 
+			missing(1), 
+			error(2) 
+			}
+    MAX-ACCESS  	read-only
+    STATUS      	current
+    DESCRIPTION		"SFP1 Status"
+    ::= { gbeamStatSfp 1 }
+
+statSfpSfpInterfaceType        OBJECT-TYPE
+    SYNTAX              INTEGER {
+						none(0),
+                        gbe(1),
+                        fc1x(2),
+						fc2x(3),
+						oc48(4),
+						smpte_a(6),
+						smpte_b(7),
+						digivance(8)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "SFP Interface Type"
+    ::= { gbeamStatSfp 3 }
+
+gbeamConf 		OBJECT IDENTIFIER	::= {gbeam 4}
+
+gbeamConfControl	OBJECT IDENTIFIER	::= {gbeamConf 1}
+
+confControlInService		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"In Service"
+    ::= { gbeamConfControl 1 }
+
+confControlControlLoopRadio	OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Radio Loop mode"
+    ::= { gbeamConfControl 2 }
+
+confControlControlLoopSFP1		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"SFP1 Loop mode"
+    ::= { gbeamConfControl 3 }
+
+confControlControlLoopRadioLocal   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Radio Local Loopback mode"
+    ::= { gbeamConfControl 6 }
+
+confControlSFPLOSFwdEnable		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"SFP LOS Forwarding Enable"
+    ::= { gbeamConfControl 7 }
+
+confControlSFPFSLossEnable		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"SFP Frame Sync Loss Enable"
+    ::= { gbeamConfControl 8 }
+
+gbeamConfAsync          OBJECT IDENTIFIER	::= {gbeamConf 2}
+
+gbeamConfAsyncUser      OBJECT IDENTIFIER       ::= {gbeamConfAsync 1}
+
+gbeamConfAsyncUserAdmin OBJECT IDENTIFIER       ::= {gbeamConfAsyncUser 1}
+
+confAsyncUserAdminloginId                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (3..32))
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Login ID for Admin CLI user" 
+    ::= { gbeamConfAsyncUserAdmin 2 }
+
+confAsyncUserAdminAccessLevel             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        administrator(1),
+                        install(2),
+                        guest(3),
+                        operator(4),
+                        bash(5)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Security access level for Admin CLI user"
+    ::= { gbeamConfAsyncUserAdmin 3 }
+
+confAsyncUserAdminShell                   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        cli(1),
+                        bash(2)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Shell assigned to user"
+    ::= { gbeamConfAsyncUserAdmin 4 }
+
+confAsyncUserAdminEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Enable or disable user access"
+    ::= { gbeamConfAsyncUserAdmin 5 }
+
+gbeamConfAsyncUserSysAdmin   OBJECT IDENTIFIER       ::= {gbeamConfAsyncUser 2}
+
+confAsyncUserSysAdminloginId                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (3..32))
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Login ID for SysAdmin bash shell user"
+    ::= { gbeamConfAsyncUserSysAdmin 2 }
+
+confAsyncUserSysAdminAccessLevel             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        administrator(1),
+                        install(2),
+                        guest(3),
+                        operator(4),
+                        bash(5)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Security access level for SysAdmin bash user"
+    ::= { gbeamConfAsyncUserSysAdmin 3 }
+
+confAsyncUserSysAdminShell                   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        cli(1),
+                        bash(2)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Shell assigned to user"
+    ::= { gbeamConfAsyncUserSysAdmin 4 }
+
+confAsyncUserSysAdminEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable or disable user access"
+    ::= { gbeamConfAsyncUserSysAdmin 5 }
+
+gbeamConfAsyncUserInstall OBJECT IDENTIFIER       ::= {gbeamConfAsyncUser 3}
+
+confAsyncUserInstallloginId                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (3..32))
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Login ID for Install CLI user"
+    ::= { gbeamConfAsyncUserInstall 2 }
+
+confAsyncUserInstallAccessLevel             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        administrator(1),
+                        install(2),
+                        guest(3),
+                        operator(4),
+                        bash(5)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Security access level for Install CLI user"
+    ::= { gbeamConfAsyncUserInstall 3 }
+
+confAsyncUserInstallShell                   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        cli(1),
+                        bash(2)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Shell assigned to user"
+    ::= { gbeamConfAsyncUserInstall 4 }
+
+confAsyncUserInstallEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable or disable user access"
+    ::= { gbeamConfAsyncUserInstall 5 }
+
+gbeamConfAsyncUserCustom1 OBJECT IDENTIFIER       ::= {gbeamConfAsyncUser 4}
+
+confAsyncUserCustom1loginId                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (3..32))
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Login ID for Custom 1 CLI user"
+    ::= { gbeamConfAsyncUserCustom1 2 }
+
+confAsyncUserCustom1AccessLevel             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        administrator(1),
+                        install(2),
+                        guest(3),
+                        operator(4)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Security access level for Custom 1 CLI user"
+    ::= { gbeamConfAsyncUserCustom1 3 }
+
+confAsyncUserCustom1Shell                   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        cli(1),
+                        bash(2)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Shell assigned to user"
+    ::= { gbeamConfAsyncUserCustom1 4 }
+
+confAsyncUserCustom1Enable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable or disable user access"
+    ::= { gbeamConfAsyncUserCustom1 5 }
+
+gbeamConfAsyncUserCustom2 OBJECT IDENTIFIER       ::= {gbeamConfAsyncUser 5}
+
+confAsyncUserCustom2loginId                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (3..32))
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Login ID for Custom 2 CLI user"
+    ::= { gbeamConfAsyncUserCustom2 2 }
+
+confAsyncUserCustom2AccessLevel             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        administrator(1),
+                        install(2),
+                        guest(3),
+                        operator(4)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Security access level for Custom 2 CLI user"
+    ::= { gbeamConfAsyncUserCustom2 3 }
+
+confAsyncUserCustom2Shell                   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        cli(1),
+                        bash(2)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Shell assigned to user"
+    ::= { gbeamConfAsyncUserCustom2 4 }
+
+confAsyncUserCustom2Enable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable or disable user access"
+    ::= { gbeamConfAsyncUserCustom2 5 }
+
+gbeamConfAsyncUserCustom3 OBJECT IDENTIFIER       ::= {gbeamConfAsyncUser 6}
+
+confAsyncUserCustom3loginId                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (3..32))
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Login ID for Custom 3 CLI user"
+    ::= { gbeamConfAsyncUserCustom3 2 }
+
+confAsyncUserCustom3AccessLevel             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        administrator(1),
+                        install(2),
+                        guest(3),
+                        operator(4)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Security access level for Custom 3 CLI user"
+    ::= { gbeamConfAsyncUserCustom3 3 }
+
+confAsyncUserCustom3Shell                   OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        cli(1),
+                        bash(2)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Shell assigned to user"
+    ::= { gbeamConfAsyncUserCustom3 4 }
+
+confAsyncUserCustom3Enable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable or disable user access"
+    ::= { gbeamConfAsyncUserCustom3 5 }
+
+gbeamConfAsyncSrv       OBJECT IDENTIFIER       ::= {gbeamConfAsync 2}
+
+gbeamConfAsyncSrvTelnet OBJECT IDENTIFIER       ::= {gbeamConfAsyncSrv 1}
+
+confAsyncSrvTelnetEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable Telnet access"
+    ::= { gbeamConfAsyncSrvTelnet 1 } 
+
+gbeamConfAsyncSrvSSH    OBJECT IDENTIFIER       ::= {gbeamConfAsyncSrv 2}
+
+confAsyncSrvSSHEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable SSH access"
+    ::= { gbeamConfAsyncSrvSSH 1 }
+
+confAsyncSrvSSHMaxAuthRetries          OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        zero(0),
+                        one(1),
+                        two(2),
+                        three(3),
+                        four(4),
+                        five(5),
+                        six(6)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Number of failed auth tries allowed, range (0 - 6)"
+    ::= { gbeamConfAsyncSrvSSH 3 }
+
+confAsyncSrvSSHLoginGraceTime          OBJECT-TYPE
+    SYNTAX              Integer32
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Time in seconds allowed to attempt login, range (10 - 360)"
+    ::= { gbeamConfAsyncSrvSSH 4 }
+
+gbeamConfAsyncSrvRadius OBJECT IDENTIFIER       ::= {gbeamConfAsyncSrv 3}
+
+confAsyncSrvRadiusEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable Radius Authentication"
+    ::= { gbeamConfAsyncSrvRadius 1 }
+
+confAsyncSrvRadiusServerIP                OBJECT-TYPE
+    SYNTAX              IpAddress
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Radius Server IP Address for Async Port"
+    ::= { gbeamConfAsyncSrvRadius 2 }
+
+confAsyncSrvRadiusSharedSecret            OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..32))
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Radius Shared Secret"
+    ::= { gbeamConfAsyncSrvRadius 3 }
+
+gbeamConfAsyncSrvLoginBanner OBJECT IDENTIFIER       ::= {gbeamConfAsyncSrv 4}
+
+confAsyncSrvLoginBannerEnable                  OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable/Disable Displaying Login Banner"
+    ::= { gbeamConfAsyncSrvLoginBanner 1 } 
+
+gbeamConfSnmp                    OBJECT IDENTIFIER	::= {gbeamConf 4}
+
+confSnmpTrapIP1		        OBJECT-TYPE
+    SYNTAX		IpAddress
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"SNMP TRAP IP Address 1"
+    ::= { gbeamConfSnmp 1 }
+
+confSnmpTrapIP2		        OBJECT-TYPE
+    SYNTAX		IpAddress
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"SNMP TRAP IP Address 2"
+    ::= { gbeamConfSnmp 2 }
+
+confSnmpSysName		OBJECT-TYPE
+    SYNTAX		DisplayString (SIZE (0..20)) 
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"System Name"
+    ::= { gbeamConfSnmp 9 }
+
+gbeamConfMisc     	OBJECT IDENTIFIER	::= {gbeamConf 6}
+
+confMiscSave			OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Save Current Runtime Configuration to Flash"
+    ::= { gbeamConfMisc 1 }
+
+confMiscTrapResendTimer		OBJECT-TYPE
+    SYNTAX              Integer32 
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Trap Resent Timer (in minutes)"
+    ::= { gbeamConfMisc 2 }
+
+gbeamConfSecureDcc      OBJECT IDENTIFIER       ::= {gbeamConf 7}
+
+confSecureDccEncrypt		        OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Enable/disable radio encryption"
+    ::= { gbeamConfSecureDcc 1 }
+
+confSecureDccPeerRadioSn             OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..32))
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Serial number of the peer radio"
+    ::= { gbeamConfSecureDcc 2 }
+
+confSecureDccBackupPeerRadioSn             OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..32))
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Serial number of the backup peer radio"
+    ::= { gbeamConfSecureDcc 3 }
+
+gbeamConfSecureDccTrap  OBJECT IDENTIFIER       ::= {gbeamConfSecureDcc 8}
+
+confSecureDccTrapInvalidCert             OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        valid(0),
+                        invalid(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Invalid certificate installed flag"
+    ::= { gbeamConfSecureDccTrap 1 }
+
+confSecureDccTrapInvalidCertTrEnable     OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "TRAP invalid cert installed"
+    ::= { gbeamConfSecureDccTrap 2 }
+
+confSecureDccTrapInvalidCertTrActive     NOTIFICATION-TYPE
+    OBJECTS           { confSecureDccTrapInvalidCert }
+    STATUS              current
+    DESCRIPTION         "Active Trap invalid cert installed"
+    ::= { gbeamConfSecureDccTrap 3 }
+
+confSecureDccTrapInvalidCertTrCancel     NOTIFICATION-TYPE
+    OBJECTS           { confSecureDccTrapInvalidCert }
+    STATUS              current
+    DESCRIPTION         "Cancel Trap invalid cert installed"
+    ::= { gbeamConfSecureDccTrap 4 }
+
+confSecureDccTrapBackupRadioConnected    OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        inactive(0),
+                        active(1)
+                        }
+    MAX-ACCESS          read-only
+    STATUS              current
+    DESCRIPTION         "Backup radio connected flag"
+    ::= { gbeamConfSecureDccTrap 5 }
+
+confSecureDccTrapBackupRadioConnectedTrEnable     OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "TRAP Backup radio connected"
+    ::= { gbeamConfSecureDccTrap 6 }
+
+confSecureDccTrapBackupRadioConnectedTrActive     NOTIFICATION-TYPE
+    OBJECTS           { confSecureDccTrapBackupRadioConnected }
+    STATUS              current
+    DESCRIPTION         "Active Trap backup radio connected"
+    ::= { gbeamConfSecureDccTrap 7 }
+
+confSecureDccTrapBackupRadioConnectedTrCancel     NOTIFICATION-TYPE
+    OBJECTS           { confSecureDccTrapBackupRadioConnected }
+    STATUS              current
+    DESCRIPTION         "Cancel Trap backup radio connected"
+    ::= { gbeamConfSecureDccTrap 8 }
+
+gbeamDiag 		OBJECT IDENTIFIER	::= {gbeam 5}
+
+diagSelfTestConfig		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Self Test Start/Stop"
+    ::= { gbeamDiag 1 }
+
+diagSelfTestStatus		OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        fail(0),
+                        pass(1),
+                        unknown(2)
+                        }
+    MAX-ACCESS		read-only
+    STATUS		current
+    DESCRIPTION		"Self Test Status"
+    ::= { gbeamDiag 2 }
+
+gbeamInstall 		OBJECT IDENTIFIER	::= {gbeam 10}
+
+gbeamInstallBase 	OBJECT IDENTIFIER ::= {gbeamInstall 1}
+
+installBaseCenterFreq 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			low(0), 
+			high(1) 
+			}
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION		"Set radio center frequency"
+    ::= { gbeamInstallBase 1 }
+
+installBaseAntennaPol 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			vertical(1), 
+			horizontal(2),
+			dual(3) 
+			}
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Antenna Polarization"
+    ::= { gbeamInstallBase 2 }
+
+installBaseAntennaType 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			at_50dBiParabolicwithShroud(1), 
+			at_50dBiFlat(2), 
+			at_45dBiParabolicwithShroud(3), 
+			at_45dBiFlat(4) 
+			}
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Antenna Type"
+    ::= { gbeamInstallBase 3 }
+
+installBaseTransceiver 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			bpsk(1), 
+			qpsk(2), 
+			gmsk(3), 
+			ofdm(4) 
+			}
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Channel Compatibility"
+    ::= { gbeamInstallBase 4 }
+
+installBaseEncoding 		OBJECT-TYPE
+    SYNTAX      	INTEGER { 
+			unspecified(0), 
+			en_8B10B(1), 
+			en_64B66B(2), 
+			en_Scrambled(3), 
+			en_FramedandScrambled(4), 
+			en_FramedandScrambledwithFEC(5) 
+			}
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Channel Coding"
+    ::= { gbeamInstallBase 5 }
+
+installBaseBitRate 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Bit Rate"
+    ::= { gbeamInstallBase 6 }
+
+installBaseChLength 		OBJECT-TYPE
+    SYNTAX      	Integer32
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Length supported by Channel"
+    ::= { gbeamInstallBase 7 }
+
+installBaseVendorName 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor Name"
+    ::= { gbeamInstallBase 8 }
+
+installBaseVendorOUI 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor OUI"
+    ::= { gbeamInstallBase 9 }
+
+installBaseVendorPN 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor PN"
+    ::= { gbeamInstallBase 10 }
+
+installBaseVendorRev 		OBJECT-TYPE
+    SYNTAX      	DisplayString
+    MAX-ACCESS          read-write
+    STATUS      	current
+    DESCRIPTION 	"Radio Vendor Rev"
+    ::= { gbeamInstallBase 11 }
+
+installBaseFECEnable               OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "FPGA FEC Enable"
+    ::= { gbeamInstallBase 12 }
+
+gbeamInstallExt         OBJECT IDENTIFIER ::= {gbeamInstall 2}
+
+installExtOptions			OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Diagnostic Options"
+    ::= { gbeamInstallExt 1 }
+
+installExtVendorSN		OBJECT-TYPE
+    SYNTAX		DisplayString
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Vendor SN"
+    ::= { gbeamInstallExt 2 }
+
+installExtYearCode                OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Year Date Code"
+    ::= { gbeamInstallExt 3 }
+
+installExtMonthCode               OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Month Date Code"
+    ::= { gbeamInstallExt 4 }
+
+installExtDayCode                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (2))
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Day Date Code"
+    ::= { gbeamInstallExt 5 }
+
+installExtLotCode                 OBJECT-TYPE
+    SYNTAX              DisplayString (SIZE (0..2))
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Lot Code"
+    ::= { gbeamInstallExt 6 }
+
+installExtDiagType		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Diagnostics Type"
+    ::= { gbeamInstallExt 7 }
+
+installExtDiagControl		OBJECT-TYPE
+    SYNTAX		Integer32
+    MAX-ACCESS          read-write
+    STATUS		current
+    DESCRIPTION		"Radio Diagnostics Control"
+    ::= { gbeamInstallExt 8 }
+
+gbeamInstallMisc        OBJECT IDENTIFIER ::= {gbeamInstall 3}
+
+installMiscSfpInterfaceType        OBJECT-TYPE
+    SYNTAX              INTEGER {
+						none(0),
+                        gbe(1),
+                        fc1x(2),
+						fc2x(3),
+						oc48(4),
+						smpte_a(6),
+						smpte_b(7),
+						digivance(8)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "SFP Interface Type"
+    ::= { gbeamInstallMisc 2 }
+
+installMiscSave			OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        off(0),
+                        on(1)
+                        }
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"Save Current Install Configuration to Flash"
+    ::= { gbeamInstallMisc 3 }
+
+installMiscEncrypt                 OBJECT-TYPE
+    SYNTAX              INTEGER {
+                        disable(0),
+                        enable(1)
+                        }
+    MAX-ACCESS          read-write
+    STATUS              current
+    DESCRIPTION         "Enable/disable radio encryption"
+    ::= { gbeamInstallMisc 4 }
+
+gbeamInstallTxPwrvsTxBiasDAC	OBJECT IDENTIFIER ::= {gbeamInstall 4}
+
+installTxPwrvsTxBiasDAC_p0			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"TxPwrvsTxBiasDAC sample point 0"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 1 }
+
+installTxPwrvsTxBiasDAC_p1			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"TxPwrvsTxBiasDAC sample point 1"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 2 }
+
+installTxPwrvsTxBiasDAC_p2			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"TxPwrvsTxBiasDAC sample point 2"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 3 }
+
+installTxPwrvsTxBiasDAC_p3			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"TxPwrvsTxBiasDAC sample point 3"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 4 }
+
+installTxPwrvsTxBiasDAC_p4			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 4"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 5 }
+
+installTxPwrvsTxBiasDAC_p5			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 5"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 6 }
+
+installTxPwrvsTxBiasDAC_p6			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 6"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 7 }
+
+installTxPwrvsTxBiasDAC_p7			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 7"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 8 }
+
+installTxPwrvsTxBiasDAC_p8			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 8"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 9 }
+
+installTxPwrvsTxBiasDAC_p9			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 9"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 10 }
+
+installTxPwrvsTxBiasDAC_p10			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 10"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 11 }
+
+installTxPwrvsTxBiasDAC_p11			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 11"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 12 }
+
+installTxPwrvsTxBiasDAC_p12			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 12"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 13 }
+
+installTxPwrvsTxBiasDAC_p13			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 13"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 14 }
+
+installTxPwrvsTxBiasDAC_p14			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 14"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 15 }
+
+installTxPwrvsTxBiasDAC_p15			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 15"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 16 }
+
+installTxPwrvsTxBiasDAC_p16			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 16"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 17 }
+
+installTxPwrvsTxBiasDAC_p17			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 17"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 18 }
+
+installTxPwrvsTxBiasDAC_p18			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 18"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 19 }
+
+installTxPwrvsTxBiasDAC_p19			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 19"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 20 }
+
+installTxPwrvsTxBiasDAC_p20			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 20"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 21 }
+
+installTxPwrvsTxBiasDAC_p21			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 21"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 22 }
+
+installTxPwrvsTxBiasDAC_p22			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 22"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 23 }
+
+installTxPwrvsTxBiasDAC_p23			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 23"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 24 }
+
+installTxPwrvsTxBiasDAC_p24			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 24"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 25 }
+
+installTxPwrvsTxBiasDAC_p25			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 25"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 26 }
+
+installTxPwrvsTxBiasDAC_p26			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 26"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 27 }
+
+installTxPwrvsTxBiasDAC_p27			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 27"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 28 }
+
+installTxPwrvsTxBiasDAC_p28			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 28"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 29 }
+
+installTxPwrvsTxBiasDAC_p29			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 29"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 30 }
+
+installTxPwrvsTxBiasDAC_p30			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 30"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 31 }
+
+installTxPwrvsTxBiasDAC_p31			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 31"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 32 }
+
+installTxPwrvsTxBiasDAC_p32			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 32"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 33 }
+
+installTxPwrvsTxBiasDAC_p33			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 33"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 34 }
+
+installTxPwrvsTxBiasDAC_p34			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 34"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 35 }
+
+installTxPwrvsTxBiasDAC_p35			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 35"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 36 }
+
+installTxPwrvsTxBiasDAC_p36		OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 36"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 37 }
+
+installTxPwrvsTxBiasDAC_p37			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 37"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 38 }
+
+installTxPwrvsTxBiasDAC_p38			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 38"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 39 }
+
+installTxPwrvsTxBiasDAC_p39			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 39"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 40 }
+
+installTxPwrvsTxBiasDAC_p40			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 40"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 41 }
+
+installTxPwrvsTxBiasDAC_p41			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 41"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 42 }
+
+installTxPwrvsTxBiasDAC_p42			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 42"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 43 }
+
+installTxPwrvsTxBiasDAC_p43			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 43"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 44 }
+
+installTxPwrvsTxBiasDAC_p44			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 44"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 45 }
+
+installTxPwrvsTxBiasDAC_p45			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 45"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 46 }
+
+installTxPwrvsTxBiasDAC_p46			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 46"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 47 }
+
+installTxPwrvsTxBiasDAC_p47			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 47"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 48 }
+
+installTxPwrvsTxBiasDAC_p48			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 48"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 49 }
+
+installTxPwrvsTxBiasDAC_p49			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 49"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 50 }
+
+installTxPwrvsTxBiasDAC_p50			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"TxPwrvsTxBiasDAC sample point 50"
+    ::= { gbeamInstallTxPwrvsTxBiasDAC 51 }
+
+gbeamInstallRxPwrCalibr	OBJECT IDENTIFIER ::= {gbeamInstall 5}
+
+installRxPwrCalibr_p0			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"RxPwr calibration sample point 0"
+    ::= { gbeamInstallRxPwrCalibr 1 }
+
+installRxPwrCalibr_p1			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"RxPwr calibration sample point 1"
+    ::= { gbeamInstallRxPwrCalibr 2 }
+
+installRxPwrCalibr_p2			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"RxPwr calibration sample point 2"
+    ::= { gbeamInstallRxPwrCalibr 3 }
+
+installRxPwrCalibr_p3			OBJECT-TYPE
+    SYNTAX              DisplayString
+    MAX-ACCESS					read-write
+    STATUS							current
+    DESCRIPTION					"RxPwr calibration sample point 3"
+    ::= { gbeamInstallRxPwrCalibr 4 }
+
+installRxPwrCalibr_p4			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 4"
+    ::= { gbeamInstallRxPwrCalibr 5 }
+
+installRxPwrCalibr_p5			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 5"
+    ::= { gbeamInstallRxPwrCalibr 6 }
+
+installRxPwrCalibr_p6			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 6"
+    ::= { gbeamInstallRxPwrCalibr 7 }
+
+installRxPwrCalibr_p7			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 7"
+    ::= { gbeamInstallRxPwrCalibr 8 }
+
+installRxPwrCalibr_p8			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 8"
+    ::= { gbeamInstallRxPwrCalibr 9 }
+
+installRxPwrCalibr_p9			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 9"
+    ::= { gbeamInstallRxPwrCalibr 10 }
+
+installRxPwrCalibr_p10			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 10"
+    ::= { gbeamInstallRxPwrCalibr 11 }
+
+installRxPwrCalibr_p11			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 11"
+    ::= { gbeamInstallRxPwrCalibr 12 }
+
+installRxPwrCalibr_p12			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 12"
+    ::= { gbeamInstallRxPwrCalibr 13 }
+
+installRxPwrCalibr_p13			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 13"
+    ::= { gbeamInstallRxPwrCalibr 14 }
+
+installRxPwrCalibr_p14			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 14"
+    ::= { gbeamInstallRxPwrCalibr 15 }
+
+installRxPwrCalibr_p15			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 15"
+    ::= { gbeamInstallRxPwrCalibr 16 }
+
+installRxPwrCalibr_p16			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 16"
+    ::= { gbeamInstallRxPwrCalibr 17 }
+
+installRxPwrCalibr_p17			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 17"
+    ::= { gbeamInstallRxPwrCalibr 18 }
+
+installRxPwrCalibr_p18			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 18"
+    ::= { gbeamInstallRxPwrCalibr 19 }
+
+installRxPwrCalibr_p19			OBJECT-TYPE
+    SYNTAX               DisplayString
+    MAX-ACCESS		read-write
+    STATUS		current
+    DESCRIPTION		"RxPwr calibration sample point 19"
+    ::= { gbeamInstallRxPwrCalibr 20 }
+
+
+END
